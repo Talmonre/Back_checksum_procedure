@@ -1,0 +1,12 @@
+Run the code for the first file 
+
+"find /path/to/first/directory -type f -exec openssl dgst -md5 {} \; > checksums_directory1.txt"
+
+The run the code for the second file
+
+"find /path/to/second/directory -type f -exec openssl dgst -md5 {} \; > checksums_directory2.txt"
+
+Move the output files to the same place and run the last line to compare. 
+
+"diff checksums_directory1.txt checksums_directory2.txt
+"
