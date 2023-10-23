@@ -10,11 +10,25 @@ find /path/to/first/directory -type f -exec openssl dgst -md5 {} \; > checksums_
 ```
 find /path/to/second/directory -type f -exec openssl dgst -md5 {} \; > checksums_directory2.txt
 ```
+# This script edits the checksums created above to remove the pathing information and additional characters, then sorts the output for comparison. The output file name can be anything. The output from this script will be used for the digital comparison in during the next step. 
 
+```
+python edit.py -h
+usage: edit.py [-h] input_file output_file
+
+Sort lines in a text file with respect to lines containing an '='.
+
+positional arguments:
+  input_file   Input text file
+  output_file  Output text file
+
+optional arguments:
+  -h, --help   show this help message and exit
+```
 # Move the output files to the same place and run the last line to compare.
 ```
-diff checksums_directory1.txt checksums_directory2.txt
+diff checksums_edit1.txt checksums_edit2.txt > comparison.txt
 ```
 
-# Moving the output files or copying them is bad practice. The best method would be to path to the original files and compare those.
+# Moving the files to the same directory will make it easier to run the Python script. The final result will be a text file containing checksum values that do not correspond between the files. If the file is empty, the checks are good, and the values have no differences. The copy was successful.  
 
