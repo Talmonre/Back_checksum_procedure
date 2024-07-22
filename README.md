@@ -1,4 +1,4 @@
-# Back_checksum_procedure
+# Backup_checksum_procedure
 The code needed to compare the files between two backups to ensure they are identical, using low-tech methods native to most Linux distros. 
 
 # Run the code for the first file :
